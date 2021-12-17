@@ -5,9 +5,10 @@ import (
 
 	"fmt"
 
-	"fyne.io/fyne"
-	"fyne.io/fyne/app"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
 )
 
 // var grey = &color.Gray{Y: 123}
@@ -15,10 +16,14 @@ import (
 func main() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Hello")
-	myWindow.SetContent(widget.NewButton("aaa", func() {
-		ch := make(chan string)
-		go buttonFunc(ch)
-	}))
+	hello := widget.NewLabel("Hello Fyne!")
+	myWindow.SetContent(container.NewVBox(
+		hello,
+		widget.NewButton("aaa", func() {
+			hello.SetText("aaa")
+			ch := make(chan string)
+			go buttonFunc(ch)
+		})))
 	myWindow.Resize(fyne.NewSize(255, 510))
 	// myWindow.SetContent(widget.NewLabel("Hello World!"))
 	myWindow.ShowAndRun()
