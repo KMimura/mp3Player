@@ -25,16 +25,18 @@ func main() {
 	content := container.New(layout.NewVBoxLayout(), mainLabel, button)
 	myWindow.SetContent(content)
 	myWindow.Resize(fyne.NewSize(255, 510))
-	// myWindow.SetContent(widget.NewLabel("Hello World!"))
 	myWindow.ShowAndRun()
 }
 
 func showAnother(appInstance fyne.App, buttonCh chan string) {
-	win := appInstance.NewWindow("Shown later")
-	win.SetContent(widget.NewButton("close", func() {
-		win.Close()
-	}))
-	win.Resize(fyne.NewSize(200, 200))
-	win.Show()
+	subWin := appInstance.NewWindow("Shown later")
+	subMainLabel := widget.NewLabel("sub")
+	subButton := widget.NewButton("close", func() {
+		subWin.Close()
+	})
+	subContent := container.New(layout.NewVBoxLayout(), subMainLabel, subButton)
+	subWin.SetContent(subContent)
+	subWin.Resize(fyne.NewSize(200, 200))
+	subWin.Show()
 	buttonCh <- "done"
 }
