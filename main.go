@@ -3,8 +3,6 @@ package main
 import (
 	// "image/color"
 
-	"fmt"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
@@ -22,14 +20,19 @@ func main() {
 		widget.NewButton("aaa", func() {
 			hello.SetText("aaa")
 			ch := make(chan string)
-			go buttonFunc(ch)
+			go showAnother(myApp, ch)
 		})))
 	myWindow.Resize(fyne.NewSize(255, 510))
 	// myWindow.SetContent(widget.NewLabel("Hello World!"))
 	myWindow.ShowAndRun()
 }
 
-func buttonFunc(buttonCh chan string) {
-	fmt.Println("aaa")
+func showAnother(appInstance fyne.App, buttonCh chan string) {
+	win := appInstance.NewWindow("Shown later")
+	win.SetContent(widget.NewButton("close", func() {
+		win.Close()
+	}))
+	win.Resize(fyne.NewSize(200, 200))
+	win.Show()
 	buttonCh <- "done"
 }
