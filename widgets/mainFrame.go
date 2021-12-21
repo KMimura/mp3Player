@@ -8,13 +8,15 @@ import (
 )
 
 func CreateMainWindow(myApp fyne.App) *fyne.Container {
-	hello := widget.NewLabel("Hello Fyne!")
-	mainLabel := widget.NewLabel("Hello")
-	button := widget.NewButton("aaa", func() {
-		hello.SetText("aaa")
-		ch := make(chan string)
-		go showAnother(myApp, ch)
-	})
-	content := container.New(layout.NewVBoxLayout(), mainLabel, button)
-	return content
+	appContainer := container.New(layout.NewVBoxLayout(), createMainScreen())
+	return appContainer
+}
+
+func createMainScreen() *fyne.Container {
+	songName := widget.NewLabel("SongName")
+	songArtist := widget.NewLabel("SongArtist")
+	songAlbum := widget.NewLabel("SongAlbum")
+	songInfoContainer := container.New(layout.NewVBoxLayout(), songArtist, songAlbum)
+	mainScreenContainer := container.New(layout.NewVBoxLayout(), songName, songInfoContainer)
+	return mainScreenContainer
 }
