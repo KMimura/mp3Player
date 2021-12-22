@@ -1,7 +1,10 @@
 package widgets
 
 import (
+	"image/color"
+
 	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
@@ -18,5 +21,7 @@ func createMainScreen() *fyne.Container {
 	songAlbum := widget.NewLabel("SongAlbum")
 	songInfoContainer := container.New(layout.NewVBoxLayout(), songArtist, songAlbum)
 	mainScreenContainer := container.New(layout.NewVBoxLayout(), songName, songInfoContainer)
-	return mainScreenContainer
+	rectColorSheet := canvas.NewRectangle(color.White)
+	rectContainer := container.New(layout.NewMaxLayout(), rectColorSheet, mainScreenContainer)
+	return rectContainer
 }
