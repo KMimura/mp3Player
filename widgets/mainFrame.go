@@ -7,7 +7,6 @@ import (
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
-	"fyne.io/fyne/v2/widget"
 )
 
 func CreateMainWindow(myApp fyne.App) *fyne.Container {
@@ -16,9 +15,9 @@ func CreateMainWindow(myApp fyne.App) *fyne.Container {
 }
 
 func createMainScreen() *fyne.Container {
-	songName := widget.NewLabel("SongName")
-	songArtist := widget.NewLabel("SongArtist")
-	songAlbum := widget.NewLabel("SongAlbum")
+	songName := canvas.NewText("Song Name", color.Black)
+	songArtist := canvas.NewText("Song Artist", color.Black)
+	songAlbum := canvas.NewText("Song Album", color.Black)
 	songInfoContainer := container.New(layout.NewVBoxLayout(), songArtist, songAlbum)
 	mainScreenContainer := container.New(layout.NewVBoxLayout(), songName, songInfoContainer)
 	rectColorSheet := canvas.NewRectangle(color.White)
