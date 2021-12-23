@@ -25,5 +25,6 @@ func createMainScreen() *fyne.Container {
 	mainScreenContainer := container.New(layout.NewVBoxLayout(), songName, songInfoContainer)
 	rectColorSheet := canvas.NewRectangle(color.White)
 	rectContainer := container.New(layout.NewMaxLayout(), rectColorSheet, mainScreenContainer)
+	rectContainer.Resize(fyne.Size{Width: 200, Height: 200})
 	return rectContainer
 }
