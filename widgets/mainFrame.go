@@ -16,8 +16,11 @@ func CreateMainWindow(myApp fyne.App) *fyne.Container {
 
 func createMainScreen() *fyne.Container {
 	songName := canvas.NewText("Song Name", color.Black)
+	songName.Alignment = 1
 	songArtist := canvas.NewText("Song Artist", color.Black)
+	songArtist.Alignment = 0
 	songAlbum := canvas.NewText("Song Album", color.Black)
+	songAlbum.Alignment = 0
 	songInfoContainer := container.New(layout.NewVBoxLayout(), songArtist, songAlbum)
 	mainScreenContainer := container.New(layout.NewVBoxLayout(), songName, songInfoContainer)
 	rectColorSheet := canvas.NewRectangle(color.White)
