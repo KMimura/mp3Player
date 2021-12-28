@@ -36,8 +36,11 @@ func createButtons() *fyne.Container {
 	leftButton := widget.NewButton("", func() {
 		fmt.Println("left")
 	})
-	leftButtonSheet := canvas.NewRectangle(color.White)
-	leftButtonContainer := container.New(layout.NewMaxLayout(), leftButton, leftButtonSheet)
+	leftButtonSheet := canvas.NewRectangle(color.Transparent)
+	leftImg := canvas.NewImageFromFile("pics/left.png")
+	leftImg.Resize(fyne.Size{Width: 50, Height: 50})
+	leftImg.FillMode = canvas.ImageFillContain
+	leftButtonContainer := container.New(layout.NewMaxLayout(), leftButton, leftButtonSheet, leftImg)
 	centerButton := widget.NewButton("", func() {
 		fmt.Println("center")
 	})
