@@ -38,22 +38,22 @@ func createButtons() *fyne.Container {
 	})
 	leftButtonSheet := canvas.NewRectangle(color.Transparent)
 	leftImg := canvas.NewImageFromFile("pics/left.png")
-	leftImg.Resize(fyne.Size{Width: 50, Height: 50})
 	leftImg.FillMode = canvas.ImageFillContain
 	leftButtonContainer := container.New(layout.NewMaxLayout(), leftButton, leftButtonSheet, leftImg)
 	centerButton := widget.NewButton("", func() {
 		fmt.Println("center")
 	})
-	circle := canvas.NewCircle(color.White)
-	circle.StrokeColor = color.Gray{0x99}
-	circle.StrokeWidth = 5
-	centerButtonSheet := canvas.NewRectangle(color.Black)
-	centerButtonContainer := container.New(layout.NewMaxLayout(), centerButton, centerButtonSheet, circle)
+	centerButtonSheet := canvas.NewRectangle(color.Transparent)
+	centerImg := canvas.NewImageFromFile("pics/stop.png")
+	centerImg.FillMode = canvas.ImageFillContain
+	centerButtonContainer := container.New(layout.NewMaxLayout(), centerButton, centerButtonSheet, centerImg)
 	rightButton := widget.NewButton("", func() {
 		fmt.Println("right")
 	})
-	rightButtonSheet := canvas.NewRectangle(color.White)
-	rightButtonContainer := container.New(layout.NewMaxLayout(), rightButton, rightButtonSheet)
+	rightButtonSheet := canvas.NewRectangle(color.Transparent)
+	rightImg := canvas.NewImageFromFile("pics/right.png")
+	rightImg.FillMode = canvas.ImageFillContain
+	rightButtonContainer := container.New(layout.NewMaxLayout(), rightButton, rightButtonSheet, rightImg)
 	buttonsContainer := container.New(layout.NewGridLayout(3), leftButtonContainer, centerButtonContainer, rightButtonContainer)
 	return buttonsContainer
 }
