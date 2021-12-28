@@ -41,13 +41,16 @@ func createButtons() *fyne.Container {
 	centerButton := widget.NewButton("", func() {
 		fmt.Println("center")
 	})
-	centerButtonSheet := canvas.NewRectangle(color.White)
-	centerButtonContainer := container.New(layout.NewMaxLayout(), centerButton, centerButtonSheet)
+	circle := canvas.NewCircle(color.White)
+	circle.StrokeColor = color.Gray{0x99}
+	circle.StrokeWidth = 5
+	centerButtonSheet := canvas.NewRectangle(color.Black)
+	centerButtonContainer := container.New(layout.NewMaxLayout(), centerButton, centerButtonSheet, circle)
 	rightButton := widget.NewButton("", func() {
 		fmt.Println("right")
 	})
 	rightButtonSheet := canvas.NewRectangle(color.White)
 	rightButtonContainer := container.New(layout.NewMaxLayout(), rightButton, rightButtonSheet)
-	buttonsContainer := container.New(layout.NewHBoxLayout(), leftButtonContainer, centerButtonContainer, rightButtonContainer)
+	buttonsContainer := container.New(layout.NewGridLayout(3), leftButtonContainer, centerButtonContainer, rightButtonContainer)
 	return buttonsContainer
 }
