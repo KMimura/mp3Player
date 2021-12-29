@@ -11,6 +11,8 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+// go the icons from https://icooon-mono.com/
+
 func CreateMainWindow(myApp fyne.App) *fyne.Container {
 	appContainer := container.New(layout.NewVBoxLayout(), createMainScreen(), createButtons())
 	fmt.Println(appContainer.Size())
@@ -39,15 +41,15 @@ func createButtons() *fyne.Container {
 	leftButtonSheet := canvas.NewRectangle(color.Transparent)
 	leftImg := canvas.NewImageFromFile("pics/left.png")
 	leftImg.FillMode = canvas.ImageFillContain
-	leftImg.SetMinSize(fyne.Size{Width: 30, Height: 30})
+	leftImg.SetMinSize(fyne.Size{Width: 50, Height: 50})
 	leftButtonContainer := container.New(layout.NewMaxLayout(), leftButton, leftButtonSheet, leftImg)
 	centerButton := widget.NewButton("", func() {
 		fmt.Println("center")
 	})
 	centerButtonSheet := canvas.NewRectangle(color.Transparent)
-	centerImg := canvas.NewImageFromFile("pics/stop.png")
+	centerImg := canvas.NewImageFromFile("pics/start.png")
 	centerImg.FillMode = canvas.ImageFillContain
-	centerImg.SetMinSize(fyne.Size{Width: 30, Height: 30})
+	centerImg.SetMinSize(fyne.Size{Width: 50, Height: 50})
 	centerButtonContainer := container.New(layout.NewMaxLayout(), centerButton, centerButtonSheet, centerImg)
 	rightButton := widget.NewButton("", func() {
 		fmt.Println("right")
@@ -55,7 +57,7 @@ func createButtons() *fyne.Container {
 	rightButtonSheet := canvas.NewRectangle(color.Transparent)
 	rightImg := canvas.NewImageFromFile("pics/right.png")
 	rightImg.FillMode = canvas.ImageFillContain
-	rightImg.SetMinSize(fyne.Size{Width: 30, Height: 30})
+	rightImg.SetMinSize(fyne.Size{Width: 50, Height: 50})
 	rightButtonContainer := container.New(layout.NewMaxLayout(), rightButton, rightButtonSheet, rightImg)
 	buttonsContainer := container.New(layout.NewHBoxLayout(), layout.NewSpacer(), leftButtonContainer, centerButtonContainer, rightButtonContainer, layout.NewSpacer())
 	return buttonsContainer
