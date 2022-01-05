@@ -16,3 +16,7 @@ func (*SongPlayerImpl) Play(entities.Song) {
 func (*SongPlayerImpl) Stop(entities.Song) {
 	fmt.Println("here comes the song stop impl")
 }
+
+func (*SongPlayerImpl) Next(entities.Song) {
+	fmt.Println("here comes the song skip impl")
+}
