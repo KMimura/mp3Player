@@ -40,7 +40,7 @@ func createButtons(soingPlayer useCases.SongPlayer) *fyne.Container {
 		fmt.Println("left")
 	})
 	leftButtonSheet := canvas.NewRectangle(color.Transparent)
-	leftImg := canvas.NewImageFromFile("pics/left.png")
+	leftImg := canvas.NewImageFromFile("../pics/left.png")
 	leftImg.FillMode = canvas.ImageFillContain
 	leftImg.SetMinSize(fyne.Size{Width: 50, Height: 50})
 	leftButtonContainer := container.New(layout.NewMaxLayout(), leftButton, leftButtonSheet, leftImg)
@@ -48,7 +48,7 @@ func createButtons(soingPlayer useCases.SongPlayer) *fyne.Container {
 		fmt.Println("center")
 	})
 	centerButtonSheet := canvas.NewRectangle(color.Transparent)
-	centerImg := canvas.NewImageFromFile("pics/start.png")
+	centerImg := canvas.NewImageFromFile("../pics/start.png")
 	centerImg.FillMode = canvas.ImageFillContain
 	centerImg.SetMinSize(fyne.Size{Width: 50, Height: 50})
 	centerButtonContainer := container.New(layout.NewMaxLayout(), centerButton, centerButtonSheet, centerImg)
@@ -56,7 +56,7 @@ func createButtons(soingPlayer useCases.SongPlayer) *fyne.Container {
 		fmt.Println("right")
 	})
 	rightButtonSheet := canvas.NewRectangle(color.Transparent)
-	rightImg := canvas.NewImageFromFile("pics/right.png")
+	rightImg := canvas.NewImageFromFile("../pics/right.png")
 	rightImg.FillMode = canvas.ImageFillContain
 	rightImg.SetMinSize(fyne.Size{Width: 50, Height: 50})
 	rightButtonContainer := container.New(layout.NewMaxLayout(), rightButton, rightButtonSheet, rightImg)
