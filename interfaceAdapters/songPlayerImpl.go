@@ -6,7 +6,7 @@ import (
 )
 
 type SongPlayerImpl struct {
-	song entities.Song
+	song *entities.Song
 }
 
 func (*SongPlayerImpl) Play(entities.Song) {
@@ -19,4 +19,8 @@ func (*SongPlayerImpl) Stop(entities.Song) {
 
 func (*SongPlayerImpl) Next(entities.Song) {
 	fmt.Println("here comes the song skip impl")
+}
+
+func NewSongPlayerImpl(s *entities.Song) *SongPlayerImpl {
+	return &SongPlayerImpl{song: s}
 }

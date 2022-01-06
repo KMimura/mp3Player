@@ -5,7 +5,7 @@ import (
 )
 
 type FileManagerImpl struct {
-	queue []entities.Song
+	queue []*entities.Song
 }
 
 func (*FileManagerImpl) GetSongsFromPath(path string) []entities.Song {
@@ -14,4 +14,8 @@ func (*FileManagerImpl) GetSongsFromPath(path string) []entities.Song {
 
 func (*FileManagerImpl) GetASongFromPath(path string) entities.Song {
 	return entities.Song{}
+}
+
+func NewFileManagerImpl(q []*entities.Song) *FileManagerImpl {
+	return &FileManagerImpl{queue: q}
 }
