@@ -1,21 +1,19 @@
 package interfaceAdapters
 
-import (
-	"mp3Player/entities"
-)
-
 type FileManagerImpl struct {
-	queue []*entities.Song
+	queue []string
 }
 
-func (*FileManagerImpl) GetSongsFromPath(path string) []entities.Song {
+func (*FileManagerImpl) GetSongsFromPath(path string) []string {
 	return nil
 }
 
-func (*FileManagerImpl) GetASongFromPath(path string) entities.Song {
-	return entities.Song{}
-}
-
-func NewFileManagerImpl(q []*entities.Song) *FileManagerImpl {
-	return &FileManagerImpl{queue: q}
+func NewFileManagerImpl(path string) *FileManagerImpl {
+	fm := &FileManagerImpl{queue: nil}
+	var songs []string
+	if path != "" {
+		songs = fm.GetSongsFromPath(path)
+	}
+	fm.queue = songs
+	return fm
 }
