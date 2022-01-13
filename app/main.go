@@ -13,7 +13,8 @@ func main() {
 	myWindow := myApp.NewWindow("Hello")
 	// implementation of the use case
 	songPlayer := interfaceAdapters.SongPlayerImpl{}
-	content := widgets.CreateMainWindow(myApp, &songPlayer)
+	fileManager := interfaceAdapters.TestFileManagerImpl{}
+	content := widgets.CreateMainWindow(myApp, &songPlayer, &fileManager)
 	myWindow.SetContent(content)
 	myWindow.Resize(fyne.NewSize(300, 450))
 	myWindow.ShowAndRun()
