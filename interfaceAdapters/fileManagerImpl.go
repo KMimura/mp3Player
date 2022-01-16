@@ -2,10 +2,15 @@ package interfaceAdapters
 
 type FileManagerImpl struct {
 	queue []string
+	index int
 }
 
 func (*FileManagerImpl) GetSongsFromPath(path string) []string {
 	return nil
+}
+
+func (*FileManagerImpl) UpdateIndex(index int) {
+	return
 }
 
 func NewFileManagerImpl(path string) *FileManagerImpl {
