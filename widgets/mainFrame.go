@@ -14,13 +14,13 @@ import (
 
 // go the icons from https://icooon-mono.com/
 
-func CreateMainWindow(myApp fyne.App, songPlayer useCases.SongPlayer, playOrderManager useCases.PlayOrderManager) *fyne.Container {
+func CreateMainWindow(myApp fyne.App, songPlayer *useCases.SongPlayer, playOrderManager *useCases.PlayOrderManager) *fyne.Container {
 	appContainer := container.New(layout.NewVBoxLayout(), createMainScreen(songPlayer), createButtons(songPlayer))
 	fmt.Println(appContainer.Size())
 	return appContainer
 }
 
-func createMainScreen(songPlayer useCases.SongPlayer) *fyne.Container {
+func createMainScreen(songPlayer *useCases.SongPlayer) *fyne.Container {
 	songName := canvas.NewText("Song Name", color.Black)
 	songName.Alignment = 1
 	songArtist := canvas.NewText("Song Artist", color.Black)
@@ -35,7 +35,7 @@ func createMainScreen(songPlayer useCases.SongPlayer) *fyne.Container {
 	return rectContainer
 }
 
-func createButtons(soingPlayer useCases.SongPlayer) *fyne.Container {
+func createButtons(soingPlayer *useCases.SongPlayer) *fyne.Container {
 	leftButton := widget.NewButton("", func() {
 		fmt.Println("left")
 	})

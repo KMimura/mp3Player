@@ -1,7 +1,7 @@
 package main
 
 import (
-	"mp3Player/interfaceAdapters"
+	"mp3Player/factories"
 	"mp3Player/widgets"
 
 	"fyne.io/fyne/v2"
@@ -12,8 +12,8 @@ func main() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Hello")
 	// implementation of the use case
-	songPlayer := interfaceAdapters.SongPlayerImpl{}
-	fileManager := interfaceAdapters.PlayOrderManagerImpl{}
+	factory := factories.NewMp3PlayerFactory()
+	songPlayer, fileManager := factory.CreateIFAdapters("")
 	content := widgets.CreateMainWindow(myApp, &songPlayer, &fileManager)
 	myWindow.SetContent(content)
 	myWindow.Resize(fyne.NewSize(300, 450))
