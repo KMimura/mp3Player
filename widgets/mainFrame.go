@@ -14,7 +14,7 @@ import (
 
 // go the icons from https://icooon-mono.com/
 
-func CreateMainWindow(myApp fyne.App, songPlayer useCases.SongPlayer, fileManager useCases.FileManager) *fyne.Container {
+func CreateMainWindow(myApp fyne.App, songPlayer useCases.SongPlayer, playOrderManager useCases.PlayOrderManager) *fyne.Container {
 	appContainer := container.New(layout.NewVBoxLayout(), createMainScreen(songPlayer), createButtons(songPlayer))
 	fmt.Println(appContainer.Size())
 	return appContainer

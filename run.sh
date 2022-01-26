@@ -1,1 +1,1 @@
-go run main.go -ldflags -H=windowsgui
+go run app/main.go -ldflags -H=windowsgui

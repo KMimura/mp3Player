@@ -4,4 +4,4 @@ import (
 	"mp3Player/useCases"
 )
 
-func PlayController(fileManager useCases.FileManager) {}
+func PlayController(fileManager useCases.PlayOrderManager) {}
