@@ -5,12 +5,18 @@ type PlayOrderManagerImpl struct {
 	index int
 }
 
-func (*PlayOrderManagerImpl) GetSongPathes(path string) []string {
+func (pom *PlayOrderManagerImpl) GetSongPathes(path string) []string {
+	pom.index = 0
 	return nil
 }
 
-func (*PlayOrderManagerImpl) UpdateIndex(index int) {
+func (pom *PlayOrderManagerImpl) UpdateIndex(index int) {
+	pom.index++
 	return
+}
+
+func (*PlayOrderManagerImpl) GetCurrentSong() string {
+	return ""
 }
 
 func NewFileManagerImpl(path string) *PlayOrderManagerImpl {
