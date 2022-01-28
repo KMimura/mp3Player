@@ -7,10 +7,11 @@ import (
 
 type Mp3PlayerFactory struct{}
 
-func (*Mp3PlayerFactory) CreateIFAdapters(defaultSongFileLocation string) (useCases.SongPlayer, useCases.PlayOrderManager) {
+func (*Mp3PlayerFactory) CreateIFAdapters(defaultSongFileLocation string) (useCases.SongPlayer, useCases.PlayOrderManager, useCases.UserInteraction) {
 	sp := interfaceAdapters.NewSongPlayerImpl(nil)
 	pom := interfaceAdapters.NewFileManagerImpl(defaultSongFileLocation)
-	return sp, pom
+	gui := interfaceAdapters.NewGUIImpl()
+	return sp, pom, gui
 }
 
 func NewMp3PlayerFactory() *Mp3PlayerFactory {
