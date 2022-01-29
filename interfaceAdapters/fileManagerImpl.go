@@ -1,6 +1,7 @@
 package interfaceAdapters
 
 import (
+	"fmt"
 	"io"
 	"mp3Player/entities"
 	"os"
@@ -15,12 +16,14 @@ func (*FileManagerImpl) GetASongFromPath(path string) *entities.Song {
 	readseek := io.ReadSeeker(file)
 	if err != nil {
 		// TODO handle the exception in a proper way
+		fmt.Println("a")
 		panic(err)
 
 	}
 	songMetadata, err := tag.ReadFrom(readseek)
 	if err != nil {
 		// TODO handle the exception in a proper way
+		fmt.Println("b")
 		panic(err)
 	}
 	songName := songMetadata.Title()
@@ -28,4 +31,9 @@ func (*FileManagerImpl) GetASongFromPath(path string) *entities.Song {
 	songArtist := songMetadata.Artist()
 	songData := entities.Song{SongName: songName, SongLocation: path, Artist: songArtist, Album: songAlbum}
 	return &songData
+}
+
+func NewFileManagerImpl() *FileManagerImpl {
+	fm := FileManagerImpl{}
+	return &fm
 }
