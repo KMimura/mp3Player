@@ -17,7 +17,7 @@ type GUIImpl struct{}
 
 // go the icons from https://icooon-mono.com/
 
-func (*GUIImpl) ShowUserInterface(ch chan string) {
+func (*GUIImpl) ShowUserInterface() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Hello")
 	content := container.New(layout.NewVBoxLayout(), createMainScreen(), createButtons())
@@ -70,7 +70,7 @@ func createButtons() *fyne.Container {
 	return buttonsContainer
 }
 
-func showAnother(appInstance fyne.App, buttonCh chan string) {
+func showAnother(appInstance fyne.App) {
 	subWin := appInstance.NewWindow("Shown later")
 	subMainLabel := widget.NewLabel("sub")
 	subButton := widget.NewButton("close", func() {
@@ -80,7 +80,6 @@ func showAnother(appInstance fyne.App, buttonCh chan string) {
 	subWin.SetContent(subContent)
 	subWin.Resize(fyne.NewSize(200, 200))
 	subWin.Show()
-	buttonCh <- "done"
 }
 
 func NewGUIImpl() *GUIImpl {
