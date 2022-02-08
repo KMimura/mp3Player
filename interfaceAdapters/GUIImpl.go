@@ -3,6 +3,7 @@ package interfaceAdapters
 import (
 	"fmt"
 	"image/color"
+	"mp3Player/entities"
 	"mp3Player/utils"
 
 	"fyne.io/fyne/v2"
@@ -13,7 +14,9 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-type GUIImpl struct{}
+type GUIImpl struct {
+	currentlyPlaying *entities.Song
+}
 
 // go the icons from https://icooon-mono.com/
 
@@ -24,6 +27,10 @@ func (*GUIImpl) ShowUserInterface() {
 	myWindow.SetContent(content)
 	myWindow.Resize(fyne.NewSize(300, 450))
 	myWindow.ShowAndRun()
+}
+
+func (gui *GUIImpl) UpdatePlayingSong(song *entities.Song) {
+	gui.currentlyPlaying = song
 }
 
 func createMainScreen() *fyne.Container {
@@ -83,6 +90,6 @@ func showAnother(appInstance fyne.App) {
 }
 
 func NewGUIImpl() *GUIImpl {
-	gui := &GUIImpl{}
+	gui := &GUIImpl{currentlyPlaying: nil}
 	return gui
 }
