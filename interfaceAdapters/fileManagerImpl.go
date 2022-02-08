@@ -5,6 +5,7 @@ import (
 	"io"
 	"mp3Player/entities"
 	"os"
+	"strings"
 
 	"github.com/dhowden/tag"
 )
@@ -27,6 +28,16 @@ func (*FileManagerImpl) GetASongFromPath(path string) *entities.Song {
 		panic(err)
 	}
 	songName := songMetadata.Title()
+	if songName == "" {
+		splitSongName := strings.Split(path, "/")
+		lastElement := splitSongName[len(splitSongName)-1]
+		lastElementSplit := strings.Split(lastElement, ".")
+		var songNameConcat string
+		for i := 0; i < len(lastElementSplit)-1; i++ {
+			songNameConcat += lastElementSplit[i]
+		}
+		songName = songNameConcat
+	}
 	songAlbum := songMetadata.Album()
 	songArtist := songMetadata.Artist()
 	songData := entities.Song{SongName: songName, SongLocation: path, Artist: songArtist, Album: songAlbum}
