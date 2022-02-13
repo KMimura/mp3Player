@@ -1,5 +1,5 @@
 package useCases
 
 type UserInteraction interface {
-	ShowUserInterface()
+	ShowUserInterface(UseCasesInteractors)
 }

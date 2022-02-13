@@ -22,7 +22,7 @@ type GUIImpl struct {
 
 // go the icons from https://icooon-mono.com/
 
-func (*GUIImpl) ShowUserInterface() {
+func (*GUIImpl) ShowUserInterface(uci useCases.UseCasesInteractors) {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Hello")
 	content := container.New(layout.NewVBoxLayout(), createMainScreen(), createButtons())

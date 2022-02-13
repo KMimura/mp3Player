@@ -50,12 +50,7 @@ func (*PlayOrderManagerImpl) GetCurrentSong() string {
 	return ""
 }
 
-func NewPlayOrderManagerImpl(path string) *PlayOrderManagerImpl {
+func NewPlayOrderManagerImpl() *PlayOrderManagerImpl {
 	pom := &PlayOrderManagerImpl{queue: nil}
-	var songs []string
-	if path != "" {
-		songs = pom.GetSongPathes(path)
-	}
-	pom.queue = songs
 	return pom
 }
