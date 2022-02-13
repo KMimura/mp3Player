@@ -10,4 +10,4 @@ here is the component diagrom of this app (still working on this)
 
 ![app architecture](https://github.com/KMimura/mp3Player/blob/main/ui/mp3.png?raw=true)
 
-trying to build the application clean-architectureish
+trying to build the application clean-architecturish
