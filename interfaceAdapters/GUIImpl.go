@@ -15,14 +15,12 @@ import (
 )
 
 type GUIImpl struct {
-	pom useCases.PlayOrderManager
-	fm  useCases.FileManager
-	sp  useCases.SongPlayer
+	uci *useCases.UseCasesInteractors
 }
 
 // go the icons from https://icooon-mono.com/
 
-func (*GUIImpl) ShowUserInterface(uci useCases.UseCasesInteractors) {
+func (*GUIImpl) ShowUserInterface() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Hello")
 	content := container.New(layout.NewVBoxLayout(), createMainScreen(), createButtons())
@@ -87,7 +85,7 @@ func showAnother(appInstance fyne.App) {
 	subWin.Show()
 }
 
-func NewGUIImpl() *GUIImpl {
-	gui := &GUIImpl{nil, nil, nil}
+func NewGUIImpl(uci *useCases.UseCasesInteractors) *GUIImpl {
+	gui := &GUIImpl{uci}
 	return gui
 }
