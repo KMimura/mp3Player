@@ -5,5 +5,6 @@ import (
 )
 
 type FileManager interface {
+	GetSongPathes(string) []string
 	GetASongFromPath(string) *entities.Song
 }
