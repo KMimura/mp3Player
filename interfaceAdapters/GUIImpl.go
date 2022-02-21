@@ -20,16 +20,16 @@ type GUIImpl struct {
 
 // go the icons from https://icooon-mono.com/
 
-func (*GUIImpl) ShowUserInterface() {
+func (gui *GUIImpl) ShowUserInterface() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("Hello")
-	content := container.New(layout.NewVBoxLayout(), createMainScreen(), createButtons())
+	content := container.New(layout.NewVBoxLayout(), gui.createMainScreen(), gui.createButtons())
 	myWindow.SetContent(content)
 	myWindow.Resize(fyne.NewSize(300, 450))
 	myWindow.ShowAndRun()
 }
 
-func createMainScreen() *fyne.Container {
+func (*GUIImpl) createMainScreen() *fyne.Container {
 	songName := canvas.NewText("Song Name", color.Black)
 	songName.Alignment = 1
 	songArtist := canvas.NewText("Song Artist", color.Black)
@@ -44,9 +44,9 @@ func createMainScreen() *fyne.Container {
 	return rectContainer
 }
 
-func createButtons() *fyne.Container {
+func (gui *GUIImpl) createButtons() *fyne.Container {
 	leftButton := widget.NewButton("", func() {
-		fmt.Println("left")
+		gui.uci.Back()
 	})
 	leftButtonSheet := canvas.NewRectangle(color.Transparent)
 	leftImg := canvas.NewImageFromFile(utils.LeftArrowPic)
