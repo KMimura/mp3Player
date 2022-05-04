@@ -1,9 +1,13 @@
 package interfaceAdapters
 
+import (
+	"mp3Player/entities"
+)
+
 var acceptedExtentions = []string{"mp3"}
 
 type PlayOrderManagerImpl struct {
-	queue []string
+	queue []entities.Song
 	index int
 }
 
@@ -12,8 +16,8 @@ func (pom *PlayOrderManagerImpl) UpdateIndex(index int) {
 	return
 }
 
-func (*PlayOrderManagerImpl) GetCurrentSong() string {
-	return ""
+func (*PlayOrderManagerImpl) GetCurrentSong() *entities.Song {
+	return &entities.Song{}
 }
 
 func NewPlayOrderManagerImpl() *PlayOrderManagerImpl {

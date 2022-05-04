@@ -1,6 +1,8 @@
 package useCases
 
+import "mp3Player/entities"
+
 type PlayOrderManager interface {
-	GetCurrentSong() string
+	GetCurrentSong() *entities.Song
 	UpdateIndex(int)
 }
